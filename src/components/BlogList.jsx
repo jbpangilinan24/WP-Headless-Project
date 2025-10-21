@@ -10,7 +10,7 @@ function BlogList() {
   useEffect(() => {
     async function fetchPost() {
       try {
-        const response = await axios.get('https://www.ripgerber.com/wp-json/wp/v2/posts?per_page=5');
+        const response = await axios.get('https://vercel-serverless-repo.vercel.app/api/posts?per_page=5');
         const data = await response.data;
         setPosts(data);
 

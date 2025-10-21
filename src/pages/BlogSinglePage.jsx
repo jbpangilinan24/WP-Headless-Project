@@ -12,7 +12,7 @@ export default function BlogSinglePage() {
     async function fetchPost() {
       try {
         const response = await axios.get(
-          `https://www.ripgerber.com/wp-json/wp/v2/posts?slug=${slug}`
+          `https://vercel-serverless-repo.vercel.app/api/posts?slug=${slug}`
         );
         if (response.data.length === 0) {
           throw new Error("Post not found");
@@ -83,7 +83,7 @@ function FeaturedImage({ id, alt }) {
     async function fetchImage() {
       try {
         const response = await axios.get(
-          `https://www.ripgerber.com/wp-json/wp/v2/media/${id}`
+          `https://vercel-serverless-repo.vercel.app/api/media${id}`
         );
         setImageUrl(response.data.source_url);
       } catch {

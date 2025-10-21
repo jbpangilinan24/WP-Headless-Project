@@ -36,7 +36,7 @@ function BlogPage() {
         // 🔹 If selectedCategory is a slug, convert it to ID
         if (categoryParam && isNaN(categoryParam)) {
           const catResponse = await axios.get(
-            `https://www.ripgerber.com/wp-json/wp/v2/categories?slug=${categoryParam}`
+            `https://vercel-serverless-repo.vercel.app/api/categories?slug=${categoryParam}`
           );
           if (catResponse.data.length > 0) {
             categoryId = catResponse.data[0].id;
@@ -45,7 +45,7 @@ function BlogPage() {
           categoryId = categoryParam; // already an ID
         }
 
-        let url = `https://www.ripgerber.com/wp-json/wp/v2/posts?per_page=${postsPerPage}&page=${currentPage}`;
+        let url = `https://vercel-serverless-repo.vercel.app/api/posts?per_page=${postsPerPage}&page=${currentPage}`;
         if (categoryId) url += `&categories=${categoryId}`;
 
         const response = await axios.get(url);
@@ -76,7 +76,7 @@ function BlogPage() {
     async function fetchCategories() {
       try {
         const response = await axios.get(
-          "https://www.ripgerber.com/wp-json/wp/v2/categories"
+          "https://vercel-serverless-repo.vercel.app/api/categories"
         );
         setCategories(response.data);
       } catch (err) {
